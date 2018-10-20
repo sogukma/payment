@@ -1,9 +1,8 @@
-package com.pretzel.data.repository;
+package com.pretzel.payment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.pretzel.domain.CreditCard;
 
 @Repository
 public interface CreditCardRepository extends JpaRepository<CreditCard, Long> {

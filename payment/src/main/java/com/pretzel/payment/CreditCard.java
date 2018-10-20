@@ -1,4 +1,4 @@
-package com.pretzel.domain;
+package com.pretzel.payment;
 
 import java.util.Date;
 

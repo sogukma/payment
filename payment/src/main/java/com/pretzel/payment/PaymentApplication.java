@@ -1,16 +1,14 @@
 package com.pretzel.payment;
 
+import java.util.Date;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.pretzel.data.repository.CreditCardRepository;
-import com.pretzel.data.repository.CustomerRepository;
-import com.pretzel.data.repository.OrderRepository;
-import com.pretzel.domain.Customer;
-import com.pretzel.domain.Order;
+
 
 @SpringBootApplication
 public class PaymentApplication {
@@ -29,18 +27,36 @@ public class PaymentApplication {
 	@PostConstruct
 	public void init()
 	{
+		//mocked
 		Customer customer = new Customer();
 		customer.setName("Müller");
 		customer.setVorname("Hans");
 		customer.setLoyalityPoints(20);
 		customer = customerRepository.save(customer);
 		
-		CreditCard 
+		//mocked
 		
-		Order order = new Order();
-		order.setCustomer(customer);
+		CreditCard creditcard = new CreditCard();
+		creditcard.setClearingCode(1000);
+		creditcard.setCardNumber(43523435L);
+	 	creditcard.setExpiryDate(new Date(2014, 6, 20, 1, 1));
+		creditcard.setOwnerName("Hans Müller");
+		creditcard.setCustomer(customer);
+		creditcard = creditCardRepository.save(creditcard);
+		
+	
+		Orders order = new Orders();
+		//mocked
+		order.setTotalCost(2000);
+		//zu erstellen hier
+		order.setTrackingId(2343423);
 		order.setStatus("payed");
+		order.setCustomer(customer);
 		order = orderRepository.save(order);
+		
+		
+		
+
 		
 	
 	}
