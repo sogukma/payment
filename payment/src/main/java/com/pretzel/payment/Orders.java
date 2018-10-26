@@ -17,7 +17,17 @@ public class Orders {
 	private double totalCost;
 	@ManyToOne
 	private Customer customer; 
+	@ManyToOne
+	private CreditCard usedCreditCard;
 	
+	
+	
+	public CreditCard getUsedCreditCard() {
+		return usedCreditCard;
+	}
+	public void setUsedCreditCard(CreditCard usedCreditCard) {
+		this.usedCreditCard = usedCreditCard;
+	}
 	public double getTotalCost() {
 		return totalCost;
 	}

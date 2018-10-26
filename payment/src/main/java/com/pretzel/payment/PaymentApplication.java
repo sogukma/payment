@@ -17,8 +17,9 @@ public class PaymentApplication {
 	private CreditCardRepository creditCardRepository;
 	@Autowired
 	private CustomerRepository customerRepository;
+	
 	@Autowired
-	private OrderRepository orderRepository;
+	private PaymentService paymentService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(PaymentApplication.class, args);
@@ -44,16 +45,8 @@ public class PaymentApplication {
 		creditcard.setCustomer(customer);
 		creditcard = creditCardRepository.save(creditcard);
 		
-	
-		Orders order = new Orders();
-		//mocked
-		order.setTotalCost(2000);
-		//zu erstellen hier
-		order.setTrackingId(2343423);
-		order.setStatus("payed");
-		order.setCustomer(customer);
-		order = orderRepository.save(order);
-		
+		paymentService.pay(12312,21323,creditcard, customer);
+
 		
 		
 

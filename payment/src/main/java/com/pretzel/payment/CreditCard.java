@@ -1,11 +1,13 @@
 package com.pretzel.payment;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CreditCard {
@@ -18,6 +20,8 @@ public class CreditCard {
 	private int clearingCode;
 	@ManyToOne
 	private Customer customer;
+	@OneToMany(mappedBy="usedCreditCard")
+	private List<Orders> order;
 	
 	public Long getCardNumber() {
 		return cardNumber;
